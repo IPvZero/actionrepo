@@ -1,0 +1,17 @@
+name: My first example
+
+on: push
+
+jobs:
+  simple-example:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Print some stuff
+        run: echo "This is my very first github action"
+
+      - name: Run some random commands
+        run: |
+          whoami
+          hostname
+          echo "Trying to open the file..."
+          cat example.txt
