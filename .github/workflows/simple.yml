@@ -2,8 +2,9 @@ name: My first example
 
 on:
   push:
-    paths:
-      - 'example.txt'
+    branches:
+      - main
+      - test
 
 
 jobs:
@@ -20,5 +21,6 @@ jobs:
         run: |
           whoami
           hostname
+          echo "${{ secrets.SUPER_SECRET_PASS }}"
           echo "Trying to open the file..."
           cat example.txt
