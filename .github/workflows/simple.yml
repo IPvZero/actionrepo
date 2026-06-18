@@ -6,6 +6,9 @@ jobs:
   simple-example:
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout repo
+        uses: action/checkout@v4
+      
       - name: Print some stuff
         run: echo "This is my very first github action"
 
