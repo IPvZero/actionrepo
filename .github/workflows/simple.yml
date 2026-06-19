@@ -1,26 +1,12 @@
-name: My first example
+name: ChatOps Example
 
 on:
-  push:
-    branches:
-      - main
-      - test
-
+  issue_comment: 
+    types: [created]
 
 jobs:
-  simple-example:
-    runs-on: ubuntu-22.04
+  build:
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/build')
+    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-      
-      - name: Print some stuff
-        run: echo "This is my very first github action"
-
-      - name: Run some random commands
-        run: |
-          whoami
-          hostname
-          echo "${{ secrets.SUPER_SECRET_PASS }}"
-          echo "Trying to open the file..."
-          cat example.txt
+      - run: echo "Building the application..."
